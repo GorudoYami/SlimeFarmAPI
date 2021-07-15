@@ -1,0 +1,72 @@
+{
+    "0": {
+        "Name": "Pink",
+        "BreedFactor": 2.00,
+        "Special": null
+    },
+    "1": {
+        "Name": "Geo",
+        "BreedFactor": 1.50,
+        "Special": null
+    },
+    "2": {
+        "Name": "Puddle",
+        "BreedFactor": 1.00,
+        "Special": "Water"
+    },
+    "3": {
+        "Name": "Volcanic",
+        "BreedFactor": 0.70,
+        "Special": null
+    },
+    "4": {
+        "Name": "Jungle",
+        "BreedFactor": 0.60,
+        "Special": null
+    },
+    "5": {
+        "Name": "Fox",
+        "BreedFactor": 0.50,
+        "Special": null
+    },
+    "6": {
+        "Name": "Vortex",
+        "BreedFactor": 0.50,
+        "Special": null
+    },
+    "7": {
+        "Name": "Cowboy",
+        "BreedFactor": 0.75,
+        "Special": null
+    },
+    "8": {
+        "Name": "Cave",
+        "BreedFactor": 0.70,
+        "Special": "Shade"
+    },
+    "9": {
+        "Name": "Neko",
+        "BreedFactor": 0.65,
+        "Special": null
+    },
+    "10": {
+        "Name": "Oceanic",
+        "BreedFactor": 0.65,
+        "Special": "Water"
+    },
+    "11": {
+        "Name": "Music",
+        "BreedFactor": 0.40,
+        "Special": "Music"
+    },
+    "12": {
+        "Name": "Unicorn",
+        "BreedFactor": 0.40,
+        "Special": null
+    },
+    "13": {
+        "Name": "Void",
+        "BreedFactor": 0.00,
+        "Special": "Reinforced"
+    }
+}

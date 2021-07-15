@@ -1,0 +1,162 @@
+{
+    "0": {
+        "Name": "Capacity_1",
+        "Factor": 60,
+        "Length": 10
+    },
+    "1": {
+        "Name": "Capacity_2",
+        "Factor": 80,
+        "Length": 20
+    },
+    "2": {
+        "Name": "Capacity_3",
+        "Factor": 100,
+        "Length": 40
+    },
+    "3": {
+        "Name": "Capacity_4",
+        "Factor": 120,
+        "Length": 80
+    },
+    "4": {
+        "Name": "Capacity_5",
+        "Factor": 150,
+        "Length": 160
+    },
+    "5": {
+        "Name": "Efficiency_1",
+        "Factor": 1.25,
+        "Length": 10
+    },
+    "6": {
+        "Name": "Efficiency_2",
+        "Factor": 1.50,
+        "Length": 20
+    },
+    "7": {
+        "Name": "Efficiency_3",
+        "Factor": 1.75,
+        "Length": 40
+    },
+    "8": {
+        "Name": "Efficiency_4",
+        "Factor": 2.00,
+        "Length": 80
+    },
+    "9": {
+        "Name": "Efficiency_5",
+        "Factor": 2.25,
+        "Length": 160
+    },
+    "10": {
+        "Name": "Discount_1",
+        "Factor": 0.90,
+        "Length": 10
+    },
+    "11": {
+        "Name": "Discount_2",
+        "Factor": 0.80,
+        "Length": 20
+    },
+    "12": {
+        "Name": "Discount_3",
+        "Factor": 0.70,
+        "Length": 40
+    },
+    "13": {
+        "Name": "Discount_4",
+        "Factor": 0.60,
+        "Length": 80
+    },
+    "14": {
+        "Name": "Discount_5",
+        "Factor": 0.50,
+        "Length": 160
+    },
+    "15": {
+        "Name": "Luck_1",
+        "Factor": 1.25,
+        "Length": 30
+    },
+    "16": {
+        "Name": "Luck_2",
+        "Factor": 1.50,
+        "Length": 60
+    },
+    "17": {
+        "Name": "Luck_3",
+        "Factor": 2.00,
+        "Length": 180
+    },
+    "18": {
+        "Name": "Speed_1",
+        "Factor": 0.85,
+        "Length": 60
+    },
+    "19": {
+        "Name": "Speed_2",
+        "Factor": 0.70,
+        "Length": 120
+    },
+    "20": {
+        "Name": "Speed_3",
+        "Factor": 0.55,
+        "Length": 180
+    },
+    "21": {
+        "Name": "Yield_1",
+        "Factor": 1.20,
+        "Length": 60
+    },
+    "22": {
+        "Name": "Yield_2",
+        "Factor": 1.35,
+        "Length": 120
+    },
+    "23": {
+        "Name": "Yield_3",
+        "Factor": 1.50,
+        "Length": 180
+    },
+    "24": {
+        "Name": "ClimbingGear",
+        "Factor": 0.0,
+        "Length": 60
+    },
+    "25": {
+        "Name": "Flashlight",
+        "Factor": 0.0,
+        "Length": 60
+    },
+    "26": {
+        "Name": "HeatUniform",
+        "Factor": 0.0,
+        "Length": 60
+    },
+    "27": {
+        "Name": "Water",
+        "Factor": 0.0,
+        "Length": 30
+    },
+    "28": {
+        "Name": "Shade",
+        "Factor": 0.0,
+        "Length": 30
+    },
+    "29": {
+        "Name": "Net",
+        "Factor": 0.0,
+        "Length": 30
+    },
+    "30": {
+        "Name": "Music",
+        "Factor": 0.0,
+        "Length": 30
+    },
+    "31": {
+        "Name": "Reinforced",
+        "Factor": 0.0,
+        "Length": 30
+    }
+}

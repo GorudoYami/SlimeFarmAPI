@@ -1,0 +1,46 @@
+{
+    "0": {
+        "Name": "Pineapple",
+        "Saturation": 1.00
+    },
+    "1": {
+        "Name": "Mango",
+        "Saturation": 1.50
+    },
+    "2": {
+        "Name": "Carrot",
+        "Saturation": 1.00
+    },
+    "3": {
+        "Name": "Dandelion",
+        "Saturation": 1.00
+    },
+    "4": {
+        "Name": "CrystalShard",
+        "Saturation": 2.00
+    },
+    "5": {
+        "Name": "VolcanicAsh",
+        "Saturation": 2.00
+    },
+    "6": {
+        "Name": "Meat",
+        "Saturation": 2.00
+    },
+    "7": {
+        "Name": "Hay",
+        "Saturation": 1.00
+    },
+    "8": {
+        "Name": "Mushroom",
+        "Saturation": 1.00
+    },
+    "9": {
+        "Name": "Seaweed",
+        "Saturation": 1.00
+    },
+    "10": {
+        "Name": "EnchantedApple",
+        "Saturation": 1.50
+    }
+}
