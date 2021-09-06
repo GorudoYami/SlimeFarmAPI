@@ -21,6 +21,14 @@ namespace SlimeFarmAPI {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            services.AddCors(options => {
+                // Change later
+                options.AddPolicy("AllowEverything", builder => {
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+                });
+            });
             services.AddControllers();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
@@ -55,6 +63,7 @@ namespace SlimeFarmAPI {
             }
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseCors("AllowEverything");
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => {

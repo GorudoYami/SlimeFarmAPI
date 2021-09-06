@@ -22,15 +22,15 @@ namespace SlimeFarmAPI.Controllers {
             this.logger = logger;
             this.accounts = accounts;
             this.gameInfoService = gameInfoService;
-            this.gameInfoService.Test();
+            //this.gameInfoService.Test();
         }
 
-        [HttpGet("farms")]
-        public async Task<ActionResult> GetFarms() {
-            var token = HttpContext.Request.Headers["bearer"];
-            ulong accountId = accounts.GetIdFromToken(token);
-            return Ok(await gameInfoService.GetFarmsAsync(accountId));
-        }
+        //[HttpGet("farms")]
+        //public async Task<ActionResult> GetFarms() {
+            //var token = HttpContext.Request.Headers["bearer"];
+            //ulong accountId = accounts.GetIdFromToken(token);
+            //return Ok(await gameInfoService.GetFarmsAsync(accountId));
+        //}
 
         [HttpGet("inventory")]
         public async Task<Inventory> GetInventory() {

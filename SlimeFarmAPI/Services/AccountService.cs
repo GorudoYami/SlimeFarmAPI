@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SlimeFarmAPI.DTOs;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace SlimeFarmAPI.Services {
     public class AccountService {
@@ -24,14 +26,17 @@ namespace SlimeFarmAPI.Services {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]));
             uint tokenLifetime = configuration.GetValue<uint>("JwtSettings:TokenLifetime");
 
-            if (!(await IsLoginValidAsync(loginDTO)))
-                return null;
+            AccountDTO accountDTO = await database.GetAccountAsync(email: loginDTO.Email);
+            byte[] salt = Convert.FromBase64String(accountDTO.Salt);
 
-            AccountDTO accountDTO = await database.GetAccountAsync(username: loginDTO.Login);
-            if (accountDTO == null)
-                accountDTO = await database.GetAccountAsync(email: loginDTO.Login);
+            string password = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: loginDTO.Password,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA512,
+                iterationCount: 100000,
+                numBytesRequested: 512 / 8));
 
-            if (accountDTO == null)
+            if (password != accountDTO.Password)
                 return null;
 
             var claims = new List<Claim>() {
@@ -48,7 +53,7 @@ namespace SlimeFarmAPI.Services {
                 notBefore: DateTime.UtcNow,
                 issuedAt: DateTime.UtcNow,
                 expires: DateTime.UtcNow.AddMinutes(tokenLifetime),
-                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
+                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha512)
             );
 
             return token;
@@ -56,12 +61,24 @@ namespace SlimeFarmAPI.Services {
 
         public async Task<string> RegisterAsync(AccountDTO accountDTO) {
             if (await database.GetAccountAsync(email: accountDTO.Email) != null)
-                return "E-mail already registered";
-            else if (await database.GetAccountAsync(username: accountDTO.Username) != null)
-                return "Username is taken";
+                return "E-mail already registered!";
+            else if (await database.GetAccountAsync(nickname: accountDTO.Nickname) != null)
+                return "Nickname is taken!";
+
+            byte[] salt = new byte[128 / 8];
+            using (var rng = new RNGCryptoServiceProvider())
+                rng.GetNonZeroBytes(salt);
+
+            accountDTO.Salt = Convert.ToBase64String(salt);
+            accountDTO.Password = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: accountDTO.Password,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA512,
+                iterationCount: 100000,
+                numBytesRequested: 512 / 8));
 
             await database.InsertAccountAsync(accountDTO);
-            await database.InsertDefaultsAsync(accountDTO.Id);
+            //await database.InsertDefaultsAsync(accountDTO.Id);
             return null;
         }
 
@@ -78,27 +95,14 @@ namespace SlimeFarmAPI.Services {
                 notBefore: DateTime.UtcNow,
                 issuedAt: DateTime.UtcNow,
                 expires: DateTime.UtcNow.AddMinutes(tokenLifetime),
-                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
+                signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha512)
             );
 
             return token;
         }
 
-        public ulong GetIdFromToken(string token) {
-            var handler = new JwtSecurityTokenHandler();
-            JwtSecurityToken jwt = handler.ReadJwtToken(token);
-            return ulong.Parse(jwt.Subject);
-        }
-
         public async Task<bool> ChangePasswordAsync() {
             throw new NotImplementedException();
-        }
-
-        private async Task<bool> IsLoginValidAsync(LoginDTO login) {
-            if (await database.GetAccountAsync(login) != null)
-                return true;
-            else
-                return false;
         }
     }
 }

@@ -57,7 +57,7 @@ namespace SlimeFarmAPI.Controllers {
         public async Task<ActionResult> Register(AccountDTO accountDTO) {
             if (await accounts.RegisterAsync(accountDTO) == null) {
                 logger.LogInformation("A new account has been created.");
-                return NoContent();
+                return Ok();
             }
             else {
                 logger.LogInformation("There was an attempt to create an acoount but a similar one already exists.");
