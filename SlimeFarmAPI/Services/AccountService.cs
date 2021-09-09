@@ -101,8 +101,8 @@ namespace SlimeFarmAPI.Services {
             return token;
         }
 
-        public async Task<bool> ChangePasswordAsync() {
-            throw new NotImplementedException();
+        public async Task<bool> ChangePasswordAsync(ChangePasswordDTO chpwDTO) {
+
         }
     }
 }

@@ -64,5 +64,15 @@ namespace SlimeFarmAPI.Controllers {
                 return Conflict();
             }
         }
+
+        [HttpPost("changepassword")]
+        public async Task<ActionResult> ChangePassword(ChangePasswordDTO changePasswordDTO) {
+            logger.LogInformation("User tries to change password...");
+            if (await accounts.ChangePasswordAsync(changePasswordDTO))
+                return Ok();
+            else
+                return Conflict();
+            }
+        }
     }
 }
